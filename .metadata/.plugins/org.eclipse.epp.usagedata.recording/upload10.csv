@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.equinox.p2.ui,1.0.101.R35x_v20090819,"org.eclipse.equinox.p2.ui",1257481028169
+started,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk",1257481028172
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481028748
+error,log,,,"Unable to load the repository http://download.eclipse.org/technology/epp/packages/galileo",1257481029566
+error,log,,,"Unable to load the repository http://download.eclipse.org/tools/mylyn/update/e3.4/",1257481029938
+error,log,,,"Unable to load the repository http://download.eclipse.org/eclipse/updates/3.5",1257481030231
+error,log,,,"Unable to load the repository http://download.eclipse.org/releases/galileo",1257481030567
+error,log,,,"Unable to load the repository http://download.eclipse.org/technology/epp/packages/galileo",1257481032460
+error,log,,,"Unable to load the repository http://download.eclipse.org/tools/mylyn/update/e3.4/",1257481032461
+error,log,,,"Unable to load the repository http://download.eclipse.org/eclipse/updates/3.5",1257481032462
+error,log,,,"Unable to load the repository http://download.eclipse.org/releases/galileo",1257481032463
+executed,command,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk.install",1257481042080
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481042092
+started,bundle,org.eclipse.debug.core,3.5.0.v20090526-1600,"org.eclipse.debug.core",1257481046923
+started,bundle,org.eclipse.jdt.launching,3.5.0.v20090527,"org.eclipse.jdt.launching",1257481046953
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481054687
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481084998
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481090632
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481106942
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481112542
+closed,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1257481115013
+started,bundle,org.eclipse.core.filesystem,1.2.0.v20090507,"org.eclipse.core.filesystem",1257481116116
+stopped,bundle,org.eclipse.mylyn.ide.ant,3.2.2.v20090912-0400-e3x,"org.eclipse.mylyn.ide.ant",1257481116497
+stopped,bundle,org.eclipse.ant.ui,3.4.1.v20090901_r351,"org.eclipse.ant.ui",1257481116534
+stopped,bundle,org.eclipse.mylyn.java.tasks,3.2.2.v20090912-0400-e3x,"org.eclipse.mylyn.java.tasks",1257481116544
