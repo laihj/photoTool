@@ -1,11 +1,21 @@
 import Image
 import sys
 import os
+import ImageDraw
 
 absFilePath = os.path.abspath('.')
 
 def blogSize(image,filepath):
-    image = image.resize((600,600*image.size[1]/image.size[0]),Image.NEAREST)
+    image = image.resize((600,600*image.size[1]/image.size[0]),Image.ANTIALIAS)
+    draw = ImageDraw.Draw(image)
+    draw.text((0,0),'http://www.laihj.net')
+
+    box = (0,image.size[1]*19/20,image.size[0],image.size[1])
+    region = image.crop(box)
+    region = region.convert('L')
+    image.paste(region,box)
+    
+    del draw
     if not os.path.exists(absFilePath + '/blog'):
         os.mkdir(absFilePath + '/blog')
     print filepath
@@ -23,13 +33,14 @@ def main(argv):
             pass
     else:
         #for root,dirs,files in os.walk(absFilePath.join(argv[1])):
-        for name in ['IMG_0896.JPG','IMG_0900.JPG']:
+        for name in os.listdir(os.getcwd()):
             try:
-                im = Image.open(absFIlePath + '/' + name)
-                blogSize(im,name)
-                print(absFilePath + '/' + name)
+                if name[-3:] == 'JPG' :
+                    im = Image.open(absFilePath + '/' + name)
+                    blogSize(im,name)
+                    print(absFilePath + '/' + name)
             except:
-                continue
+                print Exception
 
                      
             
