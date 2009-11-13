@@ -5,6 +5,13 @@ import ImageDraw
 
 absFilePath = os.path.abspath('.')
 
+def flickrSize(image,filepath)
+    image = image.resize((1600,1600*image.size[1]/image.size[0]),Image.ANTIALIAS)
+    if not os.path.exists(absFilePath + '/flickr'):
+        os.mkdir(absFilePath + '/flickr')
+    print filepath
+    image.save(absFilePath + '/flickr/' + filepath)
+
 def blogSize(image,filepath):
     image = image.resize((600,600*image.size[1]/image.size[0]),Image.ANTIALIAS)
     draw = ImageDraw.Draw(image)
@@ -31,11 +38,20 @@ def main(argv):
             blogSize(im,argv[2])
         except:
             pass
+    elif argv[1] == '-ff':
+        try:
+            if name[-3:] == 'jpg' :
+                    im = Image.open(absFilePath + '/' + name)
+                    flickrSize(im,name)
+                    print(absFilePath + '/' + name)
+            except:
+                print Exception 
+        
     else:
         #for root,dirs,files in os.walk(absFilePath.join(argv[1])):
         for name in os.listdir(os.getcwd()):
             try:
-                if name[-3:] == 'JPG' :
+                if name[-3:] == 'jpg' :
                     im = Image.open(absFilePath + '/' + name)
                     blogSize(im,name)
                     print(absFilePath + '/' + name)
