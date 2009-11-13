@@ -1,0 +1,11 @@
+* photosize
+** blog
+*** TODO 网址
+*** DONE 加底框
+    CLOSED: [2009-11-13 五 21:27]
+
+** TODO flickr
+
+** 重构
+*** TODO 提取函数，修改调用
+*** TODO 命令行调用方式，考虑多个情况，不再考虑跨文件夹调用
