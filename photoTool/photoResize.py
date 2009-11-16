@@ -5,13 +5,16 @@ import ImageDraw
 
 absFilePath = os.path.abspath('.')
 
+def photoSave( filename , filepath ):
+    if not os.path.exists(absFilePath + '/'+filename):
+        os.mkdir(absFilePath + '/'+filename)
+    print filepath
+    image.save(absFilePath + '/' + filename + '/' + filepath)
+
 def flickrSize(image,filepath)
     image = image.resize((1600,1600*image.size[1]/image.size[0]),Image.ANTIALIAS)
-    if not os.path.exists(absFilePath + '/flickr'):
-        os.mkdir(absFilePath + '/flickr')
-    print filepath
-    image.save(absFilePath + '/flickr/' + filepath)
-
+    photoSave('flickr',filepath)
+    
 def blogSize(image,filepath):
     image = image.resize((600,600*image.size[1]/image.size[0]),Image.ANTIALIAS)
     draw = ImageDraw.Draw(image)
@@ -23,10 +26,7 @@ def blogSize(image,filepath):
     image.paste(region,box)
     
     del draw
-    if not os.path.exists(absFilePath + '/blog'):
-        os.mkdir(absFilePath + '/blog')
-    print filepath
-    image.save(absFilePath + '/blog/' + filepath)
+    photoSave('blog',filepath)
 
 def main(argv):
     for arg in argv:
@@ -62,3 +62,7 @@ def main(argv):
             
 if __name__ == '__main__':
     main(sys.argv)
+
+
+
+
