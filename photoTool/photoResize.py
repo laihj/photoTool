@@ -3,60 +3,75 @@ import sys
 import os
 import ImageDraw
 
-absFilePath = os.path.abspath('.')
+ABSFILEPATH = os.path.abspath('.')
 
-def photoSave( filename , filepath ):
-    if not os.path.exists(absFilePath + '/'+filename):
-        os.mkdir(absFilePath + '/'+filename)
+
+def photosave(image, filename, filepath ):
+    """
+        save a image in files
+    """
+    if not os.path.exists(ABSFILEPATH + '/'+filename):
+        os.mkdir(ABSFILEPATH + '/'+filename)
     print filepath
-    image.save(absFilePath + '/' + filename + '/' + filepath)
+    image.save(ABSFILEPATH + '/' + filename + '/' + filepath)
 
-def flickrSize(image,filepath)
-    image = image.resize((1600,1600*image.size[1]/image.size[0]),Image.ANTIALIAS)
-    photoSave('flickr',filepath)
+def flickrsize(image, filepath):
+    """
+    resize a photo for flickr upload
+    """
+    image = image.resize((1600, 1600*image.size[1]/image.size[0]),
+                         Image.ANTIALIAS)
+    photosave(image, 'flickr', filepath)
     
-def blogSize(image,filepath):
-    image = image.resize((600,600*image.size[1]/image.size[0]),Image.ANTIALIAS)
+def blogsize(image, filepath):
+    """
+    resize a photo for blog post
+    """
+    image = image.resize((600, 600*image.size[1]/image.size[0]),
+                         Image.ANTIALIAS)
     draw = ImageDraw.Draw(image)
-    draw.text((0,0),'http://www.laihj.net')
+    draw.text((0, 0), 'http://www.laihj.net')
 
-    box = (0,image.size[1]*19/20,image.size[0],image.size[1])
+    box = (0, image.size[1]*19/20, image.size[0], image.size[1])
     region = image.crop(box)
     region = region.convert('L')
-    image.paste(region,box)
+    image.paste(region, box)
     
     del draw
-    photoSave('blog',filepath)
+    photosave(image, 'blog', filepath)
 
 def main(argv):
+    """
+    main loop
+    """
     for arg in argv:
         print arg
     if argv[1] == '-f':
-        print 'afile'
         try:
-            im = Image.open(absFilePath + '/' + argv[2])
-            blogSize(im,argv[2])
-        except:
-            pass
-    elif argv[1] == '-ff':
-        try:
-            if name[-3:] == 'jpg' :
-                    im = Image.open(absFilePath + '/' + name)
-                    flickrSize(im,name)
-                    print(absFilePath + '/' + name)
-            except:
-                print Exception 
-        
-    else:
-        #for root,dirs,files in os.walk(absFilePath.join(argv[1])):
+            image = Image.open(ABSFILEPATH + '/' + argv[2])
+            blogsize(image, argv[2])
+            image.show()
+        except Exception:
+            print 'cant open'
+    elif argv[1] == '-blog':
+        for  name in os.listdir(os.getcwd()):
+            try:
+                if name[-3:] == 'jpg' or name[-3:] == 'JPG' :
+                    image = Image.open(ABSFILEPATH + '/' + name)
+                    blogsize(image, name)
+            except Exception:
+                pass        
+    elif argv[1] == '-flickr':
+        #for root,dirs,files in os.walk(ABSFILEPATH.join(argv[1])):
         for name in os.listdir(os.getcwd()):
             try:
-                if name[-3:] == 'jpg' :
-                    im = Image.open(absFilePath + '/' + name)
-                    blogSize(im,name)
-                    print(absFilePath + '/' + name)
-            except:
-                print Exception
+                if name[-3:] == 'jpg' or name [-3:] == 'JPG' :
+                    image = Image.open(ABSFILEPATH + '/' + name)
+                    flickrsize(image, name)
+            except Exception:
+                pass
+    else:
+        print 'unknown parameter!'
 
                      
             
